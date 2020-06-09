@@ -6,11 +6,14 @@ public class ShutdownProcessThread extends Thread {
         this.threads = threads;
     }
 
+
     @Override
     public void run()
     {
+        System.out.println("Start to shut down the process");
         for(HttpClientThread thread : threads){
             try {
+                thread.setRunning(false);
                 thread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();

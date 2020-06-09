@@ -1,6 +1,7 @@
 
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.HttpClient;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,6 +44,6 @@ public class GetRequests {
         InputReaderThread readerThread = new InputReaderThread();
         readerThread.start();
 
-        Runtime.getRuntime().addShutdownHook( new ShutdownProcessThread(threads));
+        Runtime.getRuntime().addShutdownHook(new ShutdownProcessThread(threads));
     }
 }

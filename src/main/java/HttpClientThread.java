@@ -2,11 +2,12 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 
-public class HttpClientThread extends Thread{
+public class HttpClientThread extends Thread {
 
     private HttpClient httpClient;
     private volatile GetMethod get;
     private int id;
+    private boolean isRunning = true;
     private String urisToGet = "http://localhost:8080/hello-world?clientId=";
 
     HttpClientThread(HttpClient httpClient, int id) {
@@ -14,11 +15,13 @@ public class HttpClientThread extends Thread{
         this.httpClient = httpClient;
     }
 
-
+    public void setRunning(boolean running) {
+        isRunning = running;
+    }
 
     public void run() {
 
-        while (true) {
+        while (isRunning) {
 
             try {
                 int sleepTime = Helper.getRandomNumber(0, 1000);
@@ -31,17 +34,14 @@ public class HttpClientThread extends Thread{
 
                 get = new GetMethod(urisToGet + id);
                 System.out.println(id +
-                        " - about to get something from " +
+                        " client about to send request to " +
                         get.getURI());
                 httpClient.executeMethod(get);
-
-                System.out.println(id + " - get executed");
-
 
                 byte[] bytes = get.getResponseBody();
 
                 String s = new String(bytes);
-                System.out.println(id + " - " + s);
+                System.out.println(id + " client get response: " + s);
 
             } catch (Exception e) {
                 System.out.println(id + " - error: " + e);
