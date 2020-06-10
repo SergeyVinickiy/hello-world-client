@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>GetRequests</mainClass>
+                            <mainClass>ClientInitializer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

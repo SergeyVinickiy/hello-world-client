@@ -1,6 +1,9 @@
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
+/**
+ * Run method of client threads
+ */
 
 public class HttpClientThread extends Thread {
 
@@ -24,7 +27,7 @@ public class HttpClientThread extends Thread {
         while (isRunning) {
 
             try {
-                int sleepTime = Helper.getRandomNumber(0, 1000);
+                int sleepTime = getRandomNumber(0, 1000);
                 try {
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
@@ -41,7 +44,7 @@ public class HttpClientThread extends Thread {
                 byte[] bytes = get.getResponseBody();
 
                 String s = new String(bytes);
-                System.out.println(id + " client get response: " + s);
+                System.out.println(id + " client got the response: " + s);
 
             } catch (Exception e) {
                 System.out.println(id + " - error: " + e);
@@ -49,6 +52,10 @@ public class HttpClientThread extends Thread {
                 get.releaseConnection();
             }
         }
+    }
+
+    private int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
     }
 }
 

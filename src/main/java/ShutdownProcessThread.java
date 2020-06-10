@@ -1,3 +1,8 @@
+
+/**
+ * Graceful shutdown
+ */
+
 public class ShutdownProcessThread extends Thread {
 
     private HttpClientThread[] threads;
