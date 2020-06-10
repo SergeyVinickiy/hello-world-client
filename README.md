@@ -1,6 +1,6 @@
 # Hello-World Client :bird:
 
-To run the project execute following command:
+**To run the project execute following command:**
 * Go to project path in terminal (folder with pom file)
 * Run \"mvn clean install\"
 * Run \"java -jar target/hello-world-cleint-1.0-SNAPSHOT-jar-with-dependencies.jar\"
