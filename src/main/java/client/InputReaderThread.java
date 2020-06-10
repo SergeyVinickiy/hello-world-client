@@ -1,6 +1,12 @@
+package client;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+/**
+ * Thread will stop program on click
+ */
 
 public final class InputReaderThread extends Thread {
 
